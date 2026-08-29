@@ -24,6 +24,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build shared package
+        run: npm run build --workspace @portfolio/shared
+
       - name: Type check
         run: npm run typecheck
 
