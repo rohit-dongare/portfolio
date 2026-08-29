@@ -1,0 +1,46 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace frontend",
+    "dev:frontend": "npm run dev --workspace frontend",
+    "dev:backend": "npm run dev --workspace backend",
+    "build": "npm run build --workspace @portfolio/shared && npm run build --workspace frontend && npm run build --workspace backend",
+    "lint": "npm run lint --workspace @portfolio/shared && npm run lint --workspace frontend && npm run lint --workspace backend",
+    "lint:fix": "npm run lint:fix --workspace @portfolio/shared && npm run lint:fix --workspace frontend && npm run lint:fix --workspace backend",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "npm run build --workspace @portfolio/shared && npm run typecheck --workspace @portfolio/shared && npm run typecheck --workspace frontend && npm run typecheck --workspace backend",
+    "test": "npm run test --workspace @portfolio/shared && npm run test --workspace frontend && npm run test --workspace backend",
+    "test:frontend": "npm run test --workspace frontend",
+    "test:backend": "npm run test --workspace backend",
+    "test:run": "npm run test:run --workspace @portfolio/shared && npm run test:run --workspace frontend && npm run test:run --workspace backend",
+    "test:watch": "npm run test:watch --workspace @portfolio/shared && npm run test:watch --workspace frontend && npm run test:watch --workspace backend",
+    "test:coverage": "npm run test:coverage --workspace @portfolio/shared && npm run test:coverage --workspace frontend && npm run test:coverage --workspace backend",
+    "test:coverage:frontend": "npm run test:coverage --workspace frontend",
+    "test:coverage:backend": "npm run test:coverage --workspace backend",
+    "audit": "npm audit --audit-level=high",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "eslint": "^9.16.0",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,json,md,yml,yaml}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}
