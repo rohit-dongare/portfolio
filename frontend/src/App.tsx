@@ -1,15 +1,8 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useMemo } from 'react';
-
-function HomePage() {
-  return (
-    <main style={{ padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
-      <h1>Portfolio</h1>
-      <p>Foundation scaffolding is in place.</p>
-    </main>
-  );
-}
+import { HomePage } from './pages/HomePage';
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
 
 function App() {
   const queryClient = useMemo(() => new QueryClient(), []);
@@ -19,6 +12,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
