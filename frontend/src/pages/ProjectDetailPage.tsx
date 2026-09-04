@@ -75,7 +75,7 @@ export function ProjectDetailPage() {
             <hr className="editorial-rule" />
 
             <div style={{ fontSize: '1.1rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              {project.description}
+              {project.caseStudy.overview}
             </div>
 
             <div
@@ -89,6 +89,54 @@ export function ProjectDetailPage() {
               }}
             >
               <strong>QUANTIFIED IMPACT:</strong> {project.impact}
+            </div>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: '1.5rem',
+                marginBottom: '2rem',
+              }}
+            >
+              <section>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  Key Capabilities:
+                </div>
+                <ul style={{ margin: 0, paddingLeft: '1.25rem', lineHeight: 1.7 }}>
+                  {project.caseStudy.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+              </section>
+
+              <section
+                style={{
+                  borderLeft: '3px solid var(--accent-gold)',
+                  paddingLeft: '1rem',
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  Implementation Notes:
+                </div>
+                <p style={{ margin: 0, lineHeight: 1.7 }}>{project.caseStudy.implementation}</p>
+              </section>
             </div>
 
             <div style={{ marginBottom: '2rem' }}>

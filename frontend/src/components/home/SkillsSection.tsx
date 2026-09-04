@@ -54,18 +54,6 @@ export function SkillsSection() {
                   >
                     {cat.code}
                   </span>
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.72rem',
-                      fontWeight: 700,
-                      backgroundColor: 'var(--bg-card)',
-                      border: '1.5px solid var(--border-main)',
-                      padding: '0.15rem 0.4rem',
-                    }}
-                  >
-                    VERIFIED
-                  </span>
                 </div>
 
                 {/* Body Content */}
@@ -86,9 +74,9 @@ export function SkillsSection() {
 
                   {/* Skills Tag Matrix */}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                    {cat.skills.map((skill) => (
+                    {cat.skills.map((skill, skillIndex) => (
                       <span
-                        key={skill}
+                        key={`${cat.code}-${skill}-${skillIndex}`}
                         style={{
                           fontFamily: 'var(--font-mono)',
                           fontSize: '0.78rem',
@@ -118,10 +106,7 @@ export function SkillsSection() {
                   justifyContent: 'space-between',
                   backgroundColor: 'var(--bg-canvas)',
                 }}
-              >
-                <span>PROFICIENCY: ADVANCED</span>
-                <span>STATUS: ACTIVE</span>
-              </div>
+              ></div>
             </div>
           ))}
         </div>

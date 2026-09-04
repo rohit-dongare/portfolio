@@ -14,9 +14,9 @@ export function HomePage() {
       <main id="main-content">
         <HeroSection />
         <AboutSection />
+        <ExperienceSection />
         <FeaturedProjects />
         <SkillsSection />
-        <ExperienceSection />
         <ContactSection />
       </main>
       <Footer />
