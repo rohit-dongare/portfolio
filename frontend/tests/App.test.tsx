@@ -24,16 +24,14 @@ describe('App', () => {
 
     expect(screen.getByText(/Featured Engineering Projects/i)).toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: /Real-Time Chat Application/i }),
+      screen.getByRole('heading', { name: /ChatX - Real-Time Chat Application/i }),
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /Eventora Platform/i })).toBeInTheDocument();
-    expect(
-      screen.getByRole('heading', { name: /Editorial Brutalist Portfolio/i }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Movix/i })).toBeInTheDocument();
 
     expect(screen.getByText(/Skills & Domain Expertise/i)).toBeInTheDocument();
     expect(screen.getByText(/Frontend Development/i)).toBeInTheDocument();
-    expect(screen.getByText(/Backend & Real-Time APIs/i)).toBeInTheDocument();
+    expect(screen.getByText(/^Backend$/i)).toBeInTheDocument();
     expect(screen.getByText(/Databases, DevOps & Cloud/i)).toBeInTheDocument();
 
     expect(screen.getByText(/Work History & Experience/i)).toBeInTheDocument();

@@ -11,7 +11,7 @@ describe('SkillsSection', () => {
     expect(screen.getAllByText(/ReactJS/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/TypeScript/i).length).toBeGreaterThan(0);
     expect(
-      screen.getByText(/Database management, containerization, Azure cloud services/i),
+      screen.getByText(/Database management, containerization, CI\/CD pipelines/i),
     ).toBeInTheDocument();
   });
 });

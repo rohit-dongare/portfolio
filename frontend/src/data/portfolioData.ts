@@ -5,6 +5,11 @@ export interface Project {
   subtitle: string;
   description: string;
   impact: string;
+  caseStudy: {
+    overview: string;
+    features: string[];
+    implementation: string;
+  };
   techStack: string[];
   githubUrl: string;
   liveUrl?: string;
@@ -60,12 +65,24 @@ export const featuredProjects: Project[] = [
   {
     slug: 'chat-application',
     badge: 'REAL-TIME WEBSOCKETS',
-    title: 'Real-Time Chat Application',
+    title: 'ChatX - Real-Time Chat Application',
     subtitle: 'MERN + Socket.io + TailwindCSS',
     description:
-      'Built a high-concurrency real-time chat application using the MERN stack and Socket.io supporting concurrent active users with instant bidirectional messaging.',
+      'Built a high-concurrency real-time chat application using the MERN stack and supporting concurrent active users with instant bidirectional messaging.',
     impact:
       'Implemented JWT-based authentication, managed real-time user presence and state using Zustand & Context API, and designed a scalable backend with structured error handling and API separation.',
+    caseStudy: {
+      overview:
+        'ChatX is a responsive messaging platform for secure, instant communication across desktop and mobile. Socket.io keeps conversations and presence state synchronized while JWT authentication protects private user access.',
+      features: [
+        'Instant bidirectional messaging with Socket.io',
+        'JWT-based registration, login, and authorization',
+        'Online status indicators for active contacts',
+        'Responsive chat experience for mobile and desktop',
+      ],
+      implementation:
+        'MongoDB stores users and chat history, while an Express and Node.js API manages authentication and message workflows. Zustand and Context API coordinate frontend state, with Tailwind CSS and DaisyUI providing the interface.',
+    },
     techStack: [
       'MongoDB',
       'Express.js',
@@ -74,7 +91,9 @@ export const featuredProjects: Project[] = [
       'Socket.io',
       'Zustand',
       'TailwindCSS',
+      'DaisyUI',
       'JWT',
+      'Render',
     ],
     githubUrl: 'https://github.com/rohit-dongare/chat-app',
     liveUrl: 'https://chat-app-prod-m1j9.onrender.com/',
@@ -89,6 +108,20 @@ export const featuredProjects: Project[] = [
       'Developed a full-stack event management and registration platform featuring secure payment processing, conversational AI query handling, and dynamic reporting.',
     impact:
       'Integrated Stripe payment gateway for secure transactions, built an admin dashboard with full CRUD operations & participant management, integrated Wit.ai chatbot, and generated dynamic PDF summaries for event reports.',
+    caseStudy: {
+      overview:
+        'Eventora is a centralized college event management system with separate workflows for students and administrators. It brings event discovery, multi-stage registration, payments, and operational reporting into one platform.',
+      features: [
+        'Event discovery with search, category filters, and date sorting',
+        'Registration for one or multiple sub-events with capacity and fee rules',
+        'Stripe payments with registration and transaction tracking',
+        'Admin dashboard for events, participants, payments, and activity',
+        'Wit.ai chatbot for event and registration questions',
+        'PDF summaries for event, participant, and payment records',
+      ],
+      implementation:
+        'The platform models main events and sub-events independently so each can have its own schedule, capacity, pricing, and requirements. Firebase and OAuth support identity flows, while PDFKit generates administration-ready reports.',
+    },
     techStack: [
       'MongoDB',
       'Express.js',
@@ -104,27 +137,6 @@ export const featuredProjects: Project[] = [
     isFeatured: false,
   },
   {
-    slug: 'portfolio-engine',
-    badge: 'FRONTEND ARCHITECTURE',
-    title: 'Editorial Brutalist Portfolio',
-    subtitle: 'React 19 + TypeScript + Vite Monorepo',
-    description:
-      'Architected a personal portfolio and system showcase with Retro Editorial Brutalism styling, type-safe API schema contracts, and responsive layout primitives.',
-    impact:
-      'Engineered decoupled workspaces with shared Zod validation, achieved 100% test coverage with Vitest, and implemented tactile design tokens with zero UI framework bloat.',
-    techStack: [
-      'React 19',
-      'TypeScript',
-      'Vite',
-      'Zod',
-      'TanStack Query',
-      'Vitest',
-      'Azure DevOps',
-    ],
-    githubUrl: 'https://github.com/rohit-dongare/portfolio',
-    isFeatured: false,
-  },
-  {
     slug: 'movix',
     badge: 'MOVIE DISCOVERY',
     title: 'Movix',
@@ -133,6 +145,20 @@ export const featuredProjects: Project[] = [
       'A movie and TV show discovery platform that helps users browse, search, and explore movies and TV shows through popular, trending, and upcoming titles, detailed information pages, personalized recommendations, and flexible filtering.',
     impact:
       'Designed a responsive discovery experience that makes it easy to find and explore content through search, recommendations, genre and rating filters, and rich title details across desktop and mobile.',
+    caseStudy: {
+      overview:
+        'Movix is a movie and TV show discovery platform that helps users move from browsing to informed viewing decisions. It combines live catalog data with focused title pages and recommendation paths.',
+      features: [
+        'Search across movies and TV shows with immediate results',
+        'Popular, trending, and upcoming content collections',
+        'Detailed pages with cast, runtime, ratings, descriptions, and trailers',
+        'Recommendations for similar movies and shows',
+        'Genre, release date, and rating filters',
+        'Responsive layouts optimized for mobile and desktop',
+      ],
+      implementation:
+        'React presents the discovery and detail flows, consuming movie catalog data through REST APIs. Reusable content sections and responsive styling keep browsing consistent across screen sizes.',
+    },
     techStack: ['React', 'JavaScript', 'TMDB API', 'REST APIs', 'Responsive Design'],
     githubUrl: 'https://github.com/rohit-dongare/projectMovix',
     liveUrl: 'https://project-movix.vercel.app/',
@@ -153,55 +179,46 @@ export const skillCategories: SkillCategory[] = [
       'SQL',
       'Data Structures & Algorithms',
       'DBMS & Relational Modeling',
-      'System Design Basics',
-      'REST API Design',
+      'System Design',
+      'Python',
     ],
   },
   {
     category: 'Frontend Development',
     code: 'SEC-02',
-    description:
-      'Component architecture, responsive mobile/web applications, and efficient state management.',
-    skills: [
-      'ReactJS',
-      'React Native',
-      'TypeScript',
-      'Redux',
-      'Zustand',
-      'TailwindCSS',
-      'Context API',
-      'HTML5 & Modern CSS3',
-    ],
+    description: 'Component architecture, responsive mobile/web applications, cloud and devops.',
+    skills: ['ReactJS', 'React Native', 'TypeScript', 'TailwindCSS'],
   },
   {
-    category: 'Backend & Real-Time APIs',
+    category: 'Backend ',
     code: 'SEC-03',
-    description:
-      'Server-side RESTful API engineering, JWT authentication, and event-driven WebSocket systems.',
+    description: 'Server-side RESTful API engineering, JWT authentication, .',
     skills: [
       'Node.js',
       'Express.js',
       'RESTful APIs',
-      'JWT Authentication',
-      'WebSockets (Socket.io)',
-      'API Error Handling & Routing',
-      'OAuth (Google Authentication)',
-      'Third-Party API Integrations',
+      'Fastify',
+      'RBAC (Role-based access control)',
     ],
   },
   {
     category: 'Databases, DevOps & Cloud',
     code: 'SEC-04',
-    description: 'Database management, containerization, Azure cloud services, and Agile tooling.',
+    description:
+      'Database management, containerization, CI/CD pipelines, cloud services, and Agile tooling.',
     skills: [
+      'PostgreSQL',
       'MongoDB',
       'MSSQL',
       'Git & GitHub',
       'Docker',
       'Kubernetes',
-      'Azure DevOps',
-      'Postman (API Testing)',
-      'AWS (Learning)',
+      'Postman',
+      'AWS',
+      'Docker',
+      'Kubernetes',
+      'CI/CD Pipelines',
+      'Azure cloud',
     ],
   },
 ];
@@ -232,14 +249,28 @@ export const experiences: Experience[] = [
     company: 'Bridgenext',
     role: 'Associate Software Development Engineer',
     period: 'OCT 2025 — PRESENT',
-    badge: 'ACTIVE ROLE',
+    badge: 'Associate - ACTIVE ROLE',
     location: 'India',
     achievements: [
       'Optimized backend API logic, reducing response time and improving overall system performance.',
       'Improved frontend performance by refactoring React components and optimizing state rendering.',
       'Collaborated in an Agile environment using Git and Azure DevOps for seamless feature delivery and sprint releases.',
     ],
-    techStack: ['Node.js', 'Express.js', 'ReactJS', 'REST APIs', 'Git', 'Azure DevOps'],
+    techStack: [
+      'Node.js',
+      'Fastify',
+      'Express.js',
+      'ReactJS',
+      'REST APIs',
+      'Git',
+      'Azure DevOps',
+      'Docker',
+      'Kubernetes',
+      'PostgreSQL',
+      'MongoDB',
+      'Fastify',
+      'RBAC',
+    ],
   },
   {
     company: 'Bridgenext',
@@ -252,7 +283,7 @@ export const experiences: Experience[] = [
       'Integrated REST APIs with the frontend, ensuring smooth and robust data handling.',
       'Participated actively in code reviews and adhered strictly to industry-standard coding practices.',
     ],
-    techStack: ['ReactJS', 'JavaScript', 'REST APIs', 'CSS3', 'Git'],
+    techStack: ['ReactJS', 'TypeScript', 'REST APIs', 'Git'],
   },
   {
     company: 'Bridgenext',

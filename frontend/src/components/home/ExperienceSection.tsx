@@ -7,9 +7,9 @@ export function ExperienceSection() {
     <section id="experience" className="page-section">
       <div className="site-container">
         <SectionHeader
-          eyebrow="SECTION 04 // CAREER DISPATCH"
+          eyebrow="SECTION 04 // CAREER EXPERIENCE"
           title="Work History &amp; Experience"
-          description="A chronological record of engineering impact, architecture decisions, and production systems delivered across scaling engineering teams."
+          description="A chronological record of work and contributions to engineering teams."
           badge={<BrutalistBadge variant="gold">TRACK RECORD</BrutalistBadge>}
         />
 
@@ -47,16 +47,6 @@ export function ExperienceSection() {
                       marginBottom: '0.35rem',
                     }}
                   >
-                    <span
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontWeight: 900,
-                        fontSize: '0.9rem',
-                        color: 'var(--accent-gold-hover)',
-                      }}
-                    >
-                      EPISODE 0{index + 1} //
-                    </span>
                     <h3
                       style={{
                         fontFamily: 'var(--font-serif)',
