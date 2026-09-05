@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { portfolioProfile } from '../../data/portfolioData';
 import { BrutalistButton } from '../ui/BrutalistButton';
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
-
-  const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  const navLinks = useMemo(
+    () => [
+      { label: 'About', href: '#about' },
+      { label: 'Experience', href: '#experience' },
+      { label: 'Projects', href: '#projects' },
+      { label: 'Skills', href: '#skills' },
+      { label: 'Contact', href: '#contact' },
+    ],
+    [],
+  );
 
   useEffect(() => {
     const sectionIds = navLinks.map((link) => link.href.replace('#', ''));
@@ -105,7 +107,7 @@ export function Navbar() {
         }
       }
     };
-  }, []);
+  }, [navLinks]);
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
