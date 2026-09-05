@@ -31,9 +31,8 @@ export function ProjectDetailPage() {
               gap: '0.5rem',
             }}
           >
-            ← RETURN TO HOME PORTFOLIO
+            ← RETURN TO HOME
           </Link>
-          <BrutalistBadge variant="gold">CASE STUDY DOSSIER</BrutalistBadge>
         </div>
       </header>
 

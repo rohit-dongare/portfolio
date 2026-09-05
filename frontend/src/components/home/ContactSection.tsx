@@ -233,7 +233,7 @@ export function ContactSection() {
                   className="brutalist-btn brutalist-btn-primary"
                   style={{ justifyContent: 'space-between', width: '100%' }}
                 >
-                  <span>DIRECT MAILTO // LAUNCH CLIENT</span>
+                  <span>LAUNCH Email</span>
                   <span>✉</span>
                 </a>
               </div>
@@ -265,13 +265,12 @@ export function ContactSection() {
                     marginBottom: '0.5rem',
                   }}
                 >
-                  DISPATCH TRANSMITTED ✓
+                  MAIL TRANSMITTED ✓
                 </div>
                 <p
                   style={{ fontSize: '0.95rem', color: 'var(--text-main)', marginBottom: '1.5rem' }}
                 >
-                  Your email client was opened with your message details. I will review and get in
-                  touch promptly.
+                  I will review and get in touch promptly.
                 </p>
                 <BrutalistButton
                   type="button"
