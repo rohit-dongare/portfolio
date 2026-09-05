@@ -78,19 +78,6 @@ export function FeaturedProjects() {
                 >
                   {/* Top Bar of Card */}
                   <div>
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                        flexWrap: 'wrap',
-                        gap: '0.5rem',
-                        marginBottom: '0.75rem',
-                      }}
-                    >
-                      <BrutalistBadge variant="neutral">{project.badge}</BrutalistBadge>
-                    </div>
-
                     {/* Title & Subtitle */}
                     <h3
                       style={{
@@ -145,9 +132,9 @@ export function FeaturedProjects() {
                         marginBottom: '1.5rem',
                       }}
                     >
-                      {project.techStack.map((tech) => (
+                      {project.techStack.map((tech, techIdx) => (
                         <span
-                          key={tech}
+                          key={`${project.title}-${tech}-${techIdx}`}
                           style={{
                             fontFamily: 'var(--font-mono)',
                             fontSize: '0.78rem',

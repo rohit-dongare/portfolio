@@ -15,45 +15,95 @@ export function Navbar() {
   ];
 
   useEffect(() => {
-    const sectionIds = ['about', 'projects', 'skills', 'experience', 'contact'];
+    const sectionIds = navLinks.map((link) => link.href.replace('#', ''));
 
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 180;
+    const updateActiveSection = (newSection: string) => {
+      setActiveSection(newSection);
+      if (typeof window !== 'undefined' && window.history && window.history.replaceState) {
+        const currentHash = window.location.hash;
+        if (newSection) {
+          if (currentHash !== newSection) {
+            window.history.replaceState(null, '', newSection);
+          }
+        } else {
+          if (currentHash && currentHash !== '' && currentHash !== '#hero') {
+            window.history.replaceState(
+              null,
+              '',
+              window.location.pathname + window.location.search,
+            );
+          }
+        }
+      }
+    };
 
+    const handleScroll = (isInitial = false) => {
       // Check if user is scrolled near bottom of page (highlight Contact)
       if (window.innerHeight + Math.round(window.scrollY) >= document.body.offsetHeight - 80) {
-        setActiveSection('#contact');
+        updateActiveSection('#contact');
         return;
       }
+
+      const scrollPosition = window.scrollY + 180;
 
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const section = document.getElementById(sectionIds[i]);
         if (section) {
           const top = section.offsetTop;
           if (scrollPosition >= top) {
-            setActiveSection(`#${sectionIds[i]}`);
+            updateActiveSection(`#${sectionIds[i]}`);
             return;
           }
         }
       }
 
-      if (window.scrollY < 200) {
-        setActiveSection('');
+      if (window.scrollY < 200 && (!isInitial || !window.location.hash)) {
+        updateActiveSection('');
       }
     };
 
-    // Initial sync with hash if present
+    // Initial sync with hash if present and element exists
     if (window.location.hash) {
-      setActiveSection(window.location.hash);
+      const targetId = window.location.hash.replace('#', '');
+      if (document.getElementById(targetId)) {
+        setActiveSection(window.location.hash);
+      }
     }
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('hashchange', handleScroll);
-    handleScroll();
+    const onScroll = () => handleScroll(false);
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('hashchange', onScroll);
+    handleScroll(true);
+
+    const checkAndCloseMenu = () => {
+      if (typeof window !== 'undefined' && window.innerWidth >= 820) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    let mediaQuery: MediaQueryList | null = null;
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
+      mediaQuery = window.matchMedia('(min-width: 820px)');
+      if (mediaQuery.addEventListener) {
+        mediaQuery.addEventListener('change', checkAndCloseMenu);
+      } else {
+        mediaQuery.addListener(checkAndCloseMenu);
+      }
+    }
+    window.addEventListener('resize', checkAndCloseMenu);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('hashchange', handleScroll);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('hashchange', onScroll);
+      window.removeEventListener('resize', checkAndCloseMenu);
+      if (mediaQuery) {
+        if (mediaQuery.removeEventListener) {
+          mediaQuery.removeEventListener('change', checkAndCloseMenu);
+        } else {
+          mediaQuery.removeListener(checkAndCloseMenu);
+        }
+      }
     };
   }, []);
 
@@ -79,7 +129,7 @@ export function Navbar() {
         }}
       >
         <div
-          className="site-container"
+          className="site-container navbar-container"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -181,6 +231,7 @@ export function Navbar() {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div
+            className="mobile-dropdown-menu"
             style={{
               backgroundColor: 'var(--bg-card)',
               borderTop: 'var(--border-width) solid var(--border-main)',
@@ -199,20 +250,7 @@ export function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '1rem',
-                    fontWeight: isActive ? 800 : 700,
-                    textTransform: 'uppercase',
-                    color: 'var(--text-main)',
-                    padding: '0.5rem 0.75rem',
-                    backgroundColor: isActive ? 'var(--accent-gold)' : 'transparent',
-                    border: isActive ? '1.5px solid var(--border-main)' : 'none',
-                    borderBottom: isActive
-                      ? '1.5px solid var(--border-main)'
-                      : '1px dashed var(--border-main)',
-                    boxShadow: isActive ? 'var(--shadow-sm)' : 'none',
-                  }}
+                  className={`mobile-nav-link ${isActive ? 'active' : ''}`}
                 >
                   {isActive ? '● ' : '→ '}
                   {link.label}
@@ -232,7 +270,7 @@ export function Navbar() {
                 variant="primary"
                 style={{ width: '100%' }}
               >
-                View Resume / Inquiries ↗
+                Resume ↗
               </BrutalistButton>
             </div>
           </div>
@@ -252,6 +290,9 @@ export function Navbar() {
           }
           .mobile-menu-btn {
             display: none;
+          }
+          .mobile-dropdown-menu {
+            display: none !important;
           }
         }
         .nav-item-link {
@@ -274,6 +315,32 @@ export function Navbar() {
         .nav-item-link.active {
           background-color: var(--accent-gold);
           border-color: var(--border-main);
+          box-shadow: var(--shadow-sm);
+          font-weight: 800;
+        }
+        .mobile-nav-link {
+          font-family: var(--font-mono);
+          font-size: 1rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          color: var(--text-main);
+          padding: 0.5rem 0.75rem;
+          background-color: transparent;
+          border: 1.5px solid transparent;
+          border-bottom: 1px dashed var(--border-main);
+          transition: all 0.15s ease;
+          text-decoration: none;
+          display: block;
+        }
+        .mobile-nav-link:hover {
+          background-color: var(--accent-gold);
+          border: 1.5px solid var(--border-main);
+          box-shadow: var(--shadow-sm);
+          transform: translate(-1px, -1px);
+        }
+        .mobile-nav-link.active {
+          background-color: var(--accent-gold);
+          border: 1.5px solid var(--border-main);
           box-shadow: var(--shadow-sm);
           font-weight: 800;
         }

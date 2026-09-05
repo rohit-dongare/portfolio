@@ -8,8 +8,8 @@
   --text-muted: #524f48;
   --text-inverse: #fdfbf7;
   --border-main: #121212;
-  --border-width: 2px;
-  --border-width-thick: 3px;
+  --border-width: 1px;
+  --border-width-thick: 2px;
 
   /* Accent Tokens */
   --accent-gold: #e5b842;
@@ -94,6 +94,12 @@ button {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 1.25rem;
+}
+
+.navbar-container {
+  max-width: none;
+  padding-left: 8rem;
+  padding-right: 8rem;
 }
 
 @media (min-width: 768px) {

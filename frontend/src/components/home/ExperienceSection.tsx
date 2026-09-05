@@ -131,9 +131,9 @@ export function ExperienceSection() {
                 >
                   STACK:
                 </span>
-                {exp.techStack.map((tech) => (
+                {exp.techStack.map((tech, techIndex) => (
                   <span
-                    key={tech}
+                    key={`${tech}-${techIndex}`}
                     style={{
                       fontFamily: 'var(--font-mono)',
                       fontSize: '0.75rem',
