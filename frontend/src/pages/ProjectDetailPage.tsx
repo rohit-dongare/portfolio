@@ -14,6 +14,9 @@ export function ProjectDetailPage() {
           borderBottom: 'var(--border-width-thick) solid var(--border-main)',
           padding: '1rem 0',
           backgroundColor: 'var(--bg-canvas-subtle)',
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
         }}
       >
         <div
@@ -31,9 +34,8 @@ export function ProjectDetailPage() {
               gap: '0.5rem',
             }}
           >
-            ← RETURN TO HOME PORTFOLIO
+            ← RETURN TO HOME
           </Link>
-          <BrutalistBadge variant="gold">CASE STUDY DOSSIER</BrutalistBadge>
         </div>
       </header>
 
@@ -45,7 +47,9 @@ export function ProjectDetailPage() {
           >
             <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
               <BrutalistBadge variant="dark">CASE STUDY</BrutalistBadge>
-              <BrutalistBadge variant="gold">{project.badge}</BrutalistBadge>
+              <BrutalistBadge variant="gold">
+                {project.isFeatured ? 'FEATURED ARCHITECTURE' : 'FULL-STACK SYSTEM'}
+              </BrutalistBadge>
             </div>
 
             <h1

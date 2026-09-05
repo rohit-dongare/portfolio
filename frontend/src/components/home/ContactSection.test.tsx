@@ -50,7 +50,7 @@ describe('ContactSection', () => {
         expect.stringContaining('mailto:rohitdongare2611@gmail.com'),
         '_blank',
       );
-      expect(screen.getByText(/DISPATCH TRANSMITTED ✓/i)).toBeInTheDocument();
+      expect(screen.getByText(/MAIL TRANSMITTED ✓/i)).toBeInTheDocument();
     } finally {
       vi.useRealTimers();
     }

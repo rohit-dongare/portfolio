@@ -20,7 +20,6 @@ describe('ProjectDetailPage', () => {
     expect(screen.getByText(/Instant bidirectional messaging with Socket.io/i)).toBeInTheDocument();
     expect(screen.getByText(/MongoDB stores users and chat history/i)).toBeInTheDocument();
     expect(screen.getAllByText(/CASE STUDY/i).length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText(/REAL-TIME WEBSOCKETS/i).length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders project-specific details and omits unavailable live demos', () => {

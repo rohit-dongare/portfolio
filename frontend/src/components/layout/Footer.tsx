@@ -5,6 +5,20 @@ export function Footer() {
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (typeof window !== 'undefined' && window.history) {
+      window.history.pushState(null, '', window.location.pathname + window.location.search);
+    }
+  };
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      if (typeof window !== 'undefined' && window.history) {
+        window.history.pushState(null, '', href);
+      }
+    }
   };
 
   return (
@@ -83,27 +97,47 @@ export function Footer() {
               }}
             >
               <li>
-                <a href="#about" style={{ textDecoration: 'underline' }}>
+                <a
+                  href="#about"
+                  onClick={(e) => handleScrollTo(e, '#about')}
+                  style={{ textDecoration: 'underline' }}
+                >
                   → 01 // About Section
                 </a>
               </li>
               <li>
-                <a href="#projects" style={{ textDecoration: 'underline' }}>
-                  → 02 // Featured Projects
+                <a
+                  href="#experience"
+                  onClick={(e) => handleScrollTo(e, '#experience')}
+                  style={{ textDecoration: 'underline' }}
+                >
+                  → 02 // Work Experience
                 </a>
               </li>
               <li>
-                <a href="#skills" style={{ textDecoration: 'underline' }}>
-                  → 03 // Technical Skills
+                <a
+                  href="#projects"
+                  onClick={(e) => handleScrollTo(e, '#projects')}
+                  style={{ textDecoration: 'underline' }}
+                >
+                  → 03 // Featured Projects
                 </a>
               </li>
               <li>
-                <a href="#experience" style={{ textDecoration: 'underline' }}>
-                  → 04 // Work Experience
+                <a
+                  href="#skills"
+                  onClick={(e) => handleScrollTo(e, '#skills')}
+                  style={{ textDecoration: 'underline' }}
+                >
+                  → 04 // Technical Skills
                 </a>
               </li>
               <li>
-                <a href="#contact" style={{ textDecoration: 'underline' }}>
+                <a
+                  href="#contact"
+                  onClick={(e) => handleScrollTo(e, '#contact')}
+                  style={{ textDecoration: 'underline' }}
+                >
                   → 05 // Direct Contact
                 </a>
               </li>

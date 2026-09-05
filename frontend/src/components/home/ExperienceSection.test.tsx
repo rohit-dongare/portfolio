@@ -13,5 +13,6 @@ describe('ExperienceSection', () => {
     expect(screen.getAllByText(/Bridgenext/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Optimized backend API logic/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Node.js/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText('Fastify')).toHaveLength(2);
   });
 });

@@ -1,6 +1,5 @@
 export interface Project {
   slug: string;
-  badge: string;
   title: string;
   subtitle: string;
   description: string;
@@ -42,11 +41,11 @@ export interface Certification {
 
 export const portfolioProfile = {
   name: 'Rohit Dongare',
-  role: 'Associate Software Development Engineer',
+  role: 'Software Development Engineer',
   tagline:
-    'Building scalable web and mobile applications with MERN stack, real-time WebSockets, and performance optimization.',
+    'Building scalable, responsive web applications with modern technologies and a focus on performance and user experience.',
   shortBio:
-    'Software Development Engineer with experience in building scalable web and mobile applications using MERN stack and modern development tools. Skilled in RESTful API development, real-time systems, and performance optimization. Strong foundation in Data Structures, DBMS, and backend architecture with a focus on writing clean, maintainable code.',
+    'Software Development Engineer focused on building scalable, reliable, and user-centric applications. I work across the stack, from designing intuitive interfaces and robust backend systems to integrating AI-powered features and services. I enjoy solving complex problems, improving application performance, and building maintainable systems with modern development practices, automated testing, and continuous integration and deployment.',
   location: 'India',
   email: 'rohitdongare2611@gmail.com',
   phone: '+91 8767122252',
@@ -64,9 +63,8 @@ export const portfolioProfile = {
 export const featuredProjects: Project[] = [
   {
     slug: 'chat-application',
-    badge: 'REAL-TIME WEBSOCKETS',
     title: 'ChatX - Real-Time Chat Application',
-    subtitle: 'MERN + Socket.io + TailwindCSS',
+    subtitle: 'Real-Time Messaging Platform',
     description:
       'Built a high-concurrency real-time chat application using the MERN stack and supporting concurrent active users with instant bidirectional messaging.',
     impact:
@@ -101,9 +99,8 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'eventora',
-    badge: 'FULL-STACK PLATFORM',
     title: 'Eventora Platform',
-    subtitle: 'MERN + Stripe + Firebase + Wit.ai',
+    subtitle: 'College Event Management System',
     description:
       'Developed a full-stack event management and registration platform featuring secure payment processing, conversational AI query handling, and dynamic reporting.',
     impact:
@@ -138,7 +135,6 @@ export const featuredProjects: Project[] = [
   },
   {
     slug: 'movix',
-    badge: 'MOVIE DISCOVERY',
     title: 'Movix',
     subtitle: 'Movie & TV Show Discovery Platform',
     description:

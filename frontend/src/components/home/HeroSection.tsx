@@ -8,6 +8,9 @@ export function HeroSection() {
     const target = document.querySelector(href);
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' });
+      if (typeof window !== 'undefined' && window.history) {
+        window.history.pushState(null, '', href);
+      }
     }
   };
 
